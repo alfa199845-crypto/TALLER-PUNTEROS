@@ -1,28 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+using namespace std;
 
 int suma(int *arr, int n) {
     int total = 0;
+
     for (int i = 0; i < n; i++) {
-        total += *(arr + i);
+        total = total + arr[i];
     }
+
     return total;
 }
 
 int main() {
-    int n;
-    printf("Ingrese el tamaño: ");
-    scanf("%d", &n);
 
-    int *arr = (int*) malloc(n * sizeof(int));
+    int n;
+
+    cout << "Ingrese cantidad de numeros: ";
+    cin >> n;
+
+    int *arr = new int[n];
 
     for (int i = 0; i < n; i++) {
-        printf("Ingrese valor %d: ", i + 1);
-        scanf("%d", (arr + i));
+        cout << "Numero " << i + 1 << ": ";
+        cin >> arr[i];
     }
 
-    printf("Suma: %d\n", suma(arr, n));
+    cout << "Suma total: " << suma(arr, n) << endl;
 
-    free(arr);
+    delete[] arr;
+
     return 0;
 }
